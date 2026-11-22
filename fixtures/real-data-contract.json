@@ -1,0 +1,14 @@
+{
+  "_notice": "Schema example only; this file contains no real endpoint telemetry.",
+  "timestamp": "2026-11-22T10:00:00Z",
+  "host": "endpoint-name",
+  "product": "linux",
+  "category": "authentication",
+  "action": "login_failed",
+  "outcome": "failure",
+  "source": "sshd",
+  "source_ip": "192.0.2.12",
+  "user": "example-user",
+  "event_id": "sshd",
+  "message": "Source-provided event message"
+}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SigmaForge Studio | Detection Engineering</title><link rel="stylesheet" href="/styles.css"></head>
+<body><div class="layout">
+<aside class="sidebar">
+  <div class="brand"><div class="mark">Σ</div><div><b>SigmaForge</b><small>DETECTION WORKBENCH</small></div></div>
+  <div class="side-caption">WORKSPACE</div>
+  <a class="nav on" href="#overview">◫ <span>Overview</span></a>
+  <a class="nav" href="#rules">▤ <span>Rule library</span></a>
+  <a class="nav" href="#tests">✓ <span>Regression tests</span></a>
+  <div class="side-caption">TOOLING</div>
+  <div class="side-meta"><i></i> Local rule engine <b>Ready</b></div>
+  <div class="side-meta muted">YAML · ATT&amp;CK · SIEM export</div>
+  <div class="side-foot"><div class="mini-avatar">SF</div><div><b>Detection workspace</b><small>localhost only</small></div></div>
+</aside>
+<main class="main" id="overview">
+  <header class="head"><div><div class="eyebrow">DETECTION ENGINEERING / WORKSPACE</div><h1>Rule intelligence</h1><p>Validate, test and translate detection logic across SIEM backends.</p></div>
+  <div class="head-actions"><span class="local"><i></i> LOCAL RULES</span><button onclick="refresh()">↻ Refresh</button></div></header>
+  <section class="stats">
+    <article><span>Total rules</span><strong id="total">—</strong><small>YAML detection library</small></article>
+    <article><span>Valid rules</span><strong id="valid">—</strong><small>Passed structural validation</small></article>
+    <article><span>ATT&amp;CK techniques</span><strong id="techniques">—</strong><small>Technique tags mapped</small></article>
+    <article><span>Regression pass rate</span><strong id="passrate">—</strong><small id="testsub">Fixture-based tests</small></article>
+  </section>
+  <section class="content-grid" id="rules">
+    <div class="panel library"><div class="panel-head"><div><div class="eyebrow">RULE LIBRARY</div><h2>Detections</h2></div><span class="tag" id="rule-count">0 rules</span></div>
+      <div class="search"><input id="search" placeholder="Search title, ID, ATT&amp;CK technique..." oninput="renderRules()"></div>
+      <div class="rule-list" id="rule-list"><div class="empty">Loading detection rules...</div></div>
+    </div>
+    <div class="panel inspector"><div class="panel-head"><div><div class="eyebrow">RULE INSPECTOR</div><h2 id="detail-title">Select a detection</h2></div></div>
+      <div class="detail" id="detail"><div class="placeholder"><div>⌘</div><b>Choose a rule to inspect</b><span>Review metadata and compile its detection condition into a SIEM query.</span></div></div>
+      <div class="compiler"><div class="compiler-head"><div><div class="eyebrow">QUERY COMPILER</div><b>Backend output</b></div><select id="backend"><option value="splunk">Splunk SPL</option><option value="sentinel">Microsoft Sentinel KQL</option><option value="elastic">Elastic query</option></select></div>
+      <pre id="query">Select a rule to generate a query.</pre><button class="copy" onclick="copyQuery()">Copy query</button></div>
+    </div>
+  </section>
+  <section class="panel test-panel" id="tests"><div class="panel-head"><div><div class="eyebrow">QUALITY GATES</div><h2>Regression results</h2></div><span class="tag" id="test-count">0 cases</span></div>
+    <div id="test-list" class="test-list"><div class="empty">Loading test cases...</div></div>
+  </section>
+  <footer>SigmaForge Studio · Detection-as-code lab · Rule files remain local to this machine</footer>
+</main></div><script src="/app.js"></script></body></html>

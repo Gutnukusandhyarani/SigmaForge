@@ -1,0 +1,32 @@
+{
+  "event_id": {
+    "splunk": "EventCode",
+    "sentinel": "EventID",
+    "elastic": "event.code"
+  },
+  "source_ip": {
+    "splunk": "src_ip",
+    "sentinel": "IpAddress",
+    "elastic": "source.ip"
+  },
+  "user": {
+    "splunk": "user",
+    "sentinel": "TargetUserName",
+    "elastic": "user.name"
+  },
+  "action": {
+    "splunk": "action",
+    "sentinel": "Action",
+    "elastic": "event.action"
+  },
+  "process": {
+    "splunk": "process_name",
+    "sentinel": "NewProcessName",
+    "elastic": "process.name"
+  },
+  "category": {
+    "splunk": "category",
+    "sentinel": "Category",
+    "elastic": "event.category"
+  }
+}

@@ -1,0 +1,22 @@
+title: Windows Service Installed
+id: 0d8b1f50-250a-4f6b-8a4f-218e2e9a0105
+status: test
+description: Detects a Windows service installation event for review.
+author: Detection Engineering Lab
+date: 2026-11-22
+logsource:
+  product: windows
+  service: system
+detection:
+  selection:
+    action: service_installed
+    event_id:
+      - "7045"
+      - "4697"
+  condition: selection
+falsepositives:
+  - Approved software installation or service deployment
+level: high
+tags:
+  - attack.persistence
+  - attack.t1543.003

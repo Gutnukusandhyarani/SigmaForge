@@ -1,0 +1,141 @@
+[
+  {
+    "id": "0d8b1f50-250a-4f6b-8a4f-218e2e9a0101",
+    "title": "Linux SSH Authentication Failure",
+    "level": "medium",
+    "description": "Detects a failed SSH authentication event in normalized Linux authentication telemetry.",
+    "tags": [
+      "attack.credential-access",
+      "attack.t1110"
+    ],
+    "conditions": [
+      {
+        "field": "category",
+        "operator": "equals",
+        "value": "authentication"
+      },
+      {
+        "field": "action",
+        "operator": "equals",
+        "value": "login_failed"
+      }
+    ]
+  },
+  {
+    "id": "0d8b1f50-250a-4f6b-8a4f-218e2e9a0102",
+    "title": "Windows Account Created",
+    "level": "medium",
+    "description": "Detects a Windows account creation event.",
+    "tags": [
+      "attack.persistence",
+      "attack.t1136"
+    ],
+    "conditions": [
+      {
+        "field": "event_id",
+        "operator": "equals",
+        "value": "4720"
+      },
+      {
+        "field": "action",
+        "operator": "equals",
+        "value": "account_created"
+      }
+    ]
+  },
+  {
+    "id": "0d8b1f50-250a-4f6b-8a4f-218e2e9a0104",
+    "title": "Windows Security Audit Log Cleared",
+    "level": "critical",
+    "description": "Detects a Windows Security audit log clear event.",
+    "tags": [
+      "attack.defense-evasion",
+      "attack.t1070.001"
+    ],
+    "conditions": [
+      {
+        "field": "event_id",
+        "operator": "equals",
+        "value": "1102"
+      },
+      {
+        "field": "action",
+        "operator": "equals",
+        "value": "audit_log_cleared"
+      }
+    ]
+  },
+  {
+    "id": "0d8b1f50-250a-4f6b-8a4f-218e2e9a0106",
+    "title": "Windows PowerShell Process Created",
+    "level": "medium",
+    "description": "Flags PowerShell process creation for analyst review; it does not imply malicious activity by itself.",
+    "tags": [
+      "attack.execution",
+      "attack.t1059.001"
+    ],
+    "conditions": [
+      {
+        "field": "event_id",
+        "operator": "equals",
+        "value": "4688"
+      },
+      {
+        "field": "process",
+        "operator": "contains",
+        "value": "powershell"
+      }
+    ]
+  },
+  {
+    "id": "0d8b1f50-250a-4f6b-8a4f-218e2e9a0103",
+    "title": "Windows Privileged Group Membership Changed",
+    "level": "high",
+    "description": "Detects a Windows security group membership addition that should be checked against an approved change.",
+    "tags": [
+      "attack.persistence",
+      "attack.t1098"
+    ],
+    "conditions": [
+      {
+        "field": "action",
+        "operator": "equals",
+        "value": "group_member_added"
+      },
+      {
+        "field": "event_id",
+        "operator": "equals",
+        "value": [
+          "4728",
+          "4732",
+          "4756"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "0d8b1f50-250a-4f6b-8a4f-218e2e9a0105",
+    "title": "Windows Service Installed",
+    "level": "high",
+    "description": "Detects a Windows service installation event for review.",
+    "tags": [
+      "attack.persistence",
+      "attack.t1543.003"
+    ],
+    "conditions": [
+      {
+        "field": "action",
+        "operator": "equals",
+        "value": "service_installed"
+      },
+      {
+        "field": "event_id",
+        "operator": "equals",
+        "value": [
+          "7045",
+          "4697"
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,20 @@
+title: Linux SSH Authentication Failure
+id: 0d8b1f50-250a-4f6b-8a4f-218e2e9a0101
+status: test
+description: Detects a failed SSH authentication event in normalized Linux authentication telemetry.
+author: Detection Engineering Lab
+date: 2026-11-22
+logsource:
+  product: linux
+  service: sshd
+detection:
+  selection:
+    category: authentication
+    action: login_failed
+  condition: selection
+falsepositives:
+  - Mistyped credentials by a legitimate user
+level: medium
+tags:
+  - attack.credential-access
+  - attack.t1110

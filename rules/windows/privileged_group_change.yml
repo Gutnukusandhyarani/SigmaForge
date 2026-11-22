@@ -1,0 +1,23 @@
+title: Windows Privileged Group Membership Changed
+id: 0d8b1f50-250a-4f6b-8a4f-218e2e9a0103
+status: test
+description: Detects a Windows security group membership addition that should be checked against an approved change.
+author: Detection Engineering Lab
+date: 2026-11-22
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    action: group_member_added
+    event_id:
+      - "4728"
+      - "4732"
+      - "4756"
+  condition: selection
+falsepositives:
+  - Approved role or group administration
+level: high
+tags:
+  - attack.persistence
+  - attack.t1098

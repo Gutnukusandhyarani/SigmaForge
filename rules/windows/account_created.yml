@@ -1,0 +1,20 @@
+title: Windows Account Created
+id: 0d8b1f50-250a-4f6b-8a4f-218e2e9a0102
+status: test
+description: Detects a Windows account creation event.
+author: Detection Engineering Lab
+date: 2026-11-22
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    event_id: "4720"
+    action: account_created
+  condition: selection
+falsepositives:
+  - Approved user provisioning
+level: medium
+tags:
+  - attack.persistence
+  - attack.t1136

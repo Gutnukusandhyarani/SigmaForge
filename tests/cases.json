@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Linux SSH failed login is detected",
+    "event": {
+      "timestamp": "2026-11-22T10:00:00Z",
+      "host": "linux-lab",
+      "product": "linux",
+      "category": "authentication",
+      "action": "login_failed",
+      "outcome": "failure",
+      "source": "sshd",
+      "source_ip": "203.0.113.8",
+      "user": "testuser",
+      "event_id": "sshd"
+    },
+    "expect": [
+      "0d8b1f50-250a-4f6b-8a4f-218e2e9a0101"
+    ]
+  },
+  {
+    "name": "Windows account creation is detected",
+    "event": {
+      "host": "windows-lab",
+      "product": "windows",
+      "category": "identity",
+      "action": "account_created",
+      "event_id": "4720",
+      "user": "lab-user"
+    },
+    "expect": [
+      "0d8b1f50-250a-4f6b-8a4f-218e2e9a0102"
+    ]
+  },
+  {
+    "name": "Windows group change is detected",
+    "event": {
+      "host": "windows-lab",
+      "product": "windows",
+      "category": "identity",
+      "action": "group_member_added",
+      "event_id": "4732"
+    },
+    "expect": [
+      "0d8b1f50-250a-4f6b-8a4f-218e2e9a0103"
+    ]
+  },
+  {
+    "name": "Windows audit log clear is detected",
+    "event": {
+      "host": "windows-lab",
+      "product": "windows",
+      "category": "audit",
+      "action": "audit_log_cleared",
+      "event_id": "1102"
+    },
+    "expect": [
+      "0d8b1f50-250a-4f6b-8a4f-218e2e9a0104"
+    ]
+  },
+  {
+    "name": "Windows service install is detected",
+    "event": {
+      "host": "windows-lab",
+      "product": "windows",
+      "category": "service",
+      "action": "service_installed",
+      "event_id": "7045"
+    },
+    "expect": [
+      "0d8b1f50-250a-4f6b-8a4f-218e2e9a0105"
+    ]
+  },
+  {
+    "name": "Ordinary successful login should not trigger rules",
+    "event": {
+      "host": "linux-lab",
+      "product": "linux",
+      "category": "authentication",
+      "action": "login_success",
+      "event_id": "sshd"
+    },
+    "expect": []
+  },
+  {
+    "name": "PowerShell process creation flagged for review",
+    "event": {
+      "host": "windows-lab",
+      "product": "windows",
+      "category": "process",
+      "action": "process_created",
+      "event_id": "4688",
+      "process": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe"
+    },
+    "expect": [
+      "0d8b1f50-250a-4f6b-8a4f-218e2e9a0106"
+    ]
+  },
+  {
+    "name": "Other process creation is not flagged",
+    "event": {
+      "host": "windows-lab",
+      "product": "windows",
+      "category": "process",
+      "action": "process_created",
+      "event_id": "4688",
+      "process": "C:\\\\Windows\\\\System32\\\\notepad.exe"
+    },
+    "expect": []
+  }
+]

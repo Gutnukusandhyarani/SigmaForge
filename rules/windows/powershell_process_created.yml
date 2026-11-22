@@ -1,0 +1,20 @@
+title: Windows PowerShell Process Created
+id: 0d8b1f50-250a-4f6b-8a4f-218e2e9a0106
+status: test
+description: Flags PowerShell process creation for analyst review; it does not imply malicious activity by itself.
+author: Detection Engineering Lab
+date: 2026-11-22
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    event_id: "4688"
+    process|contains: powershell
+  condition: selection
+falsepositives:
+  - Approved administration, automation and software-management scripts
+level: medium
+tags:
+  - attack.execution
+  - attack.t1059.001
