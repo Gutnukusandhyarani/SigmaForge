@@ -3,19 +3,19 @@
 <title>SigmaForge Studio | Detection Engineering</title><link rel="stylesheet" href="/styles.css"></head>
 <body><div class="layout">
 <aside class="sidebar">
-  <div class="brand"><div class="mark">Σ</div><div><b>SigmaForge</b><small>DETECTION WORKBENCH</small></div></div>
+  <div class="brand"><div class="mark">Σ</div><div><b>SigmaForge</b><small>PUBLIC DETECTION WORKBENCH</small></div></div>
   <div class="side-caption">WORKSPACE</div>
   <a class="nav on" href="#overview">◫ <span>Overview</span></a>
   <a class="nav" href="#rules">▤ <span>Rule library</span></a>
   <a class="nav" href="#tests">✓ <span>Regression tests</span></a>
   <div class="side-caption">TOOLING</div>
-  <div class="side-meta"><i></i> Local rule engine <b>Ready</b></div>
+  <div class="side-meta"><i></i> Hosted read-only rule engine <b>Ready</b></div>
   <div class="side-meta muted">YAML · ATT&amp;CK · SIEM export</div>
-  <div class="side-foot"><div class="mini-avatar">SF</div><div><b>Detection workspace</b><small>localhost only</small></div></div>
+  <div class="side-foot"><div class="mini-avatar">SF</div><div><b>Detection workspace</b><small>Public read-only view</small></div></div>
 </aside>
 <main class="main" id="overview">
   <header class="head"><div><div class="eyebrow">DETECTION ENGINEERING / WORKSPACE</div><h1>Rule intelligence</h1><p>Validate, test and translate detection logic across SIEM backends.</p></div>
-  <div class="head-actions"><span class="local"><i></i> LOCAL RULES</span><button onclick="refresh()">↻ Refresh</button></div></header>
+  <div class="head-actions"><span class="local"><i></i> HOSTED RULES</span><button onclick="refresh()">↻ Refresh</button></div></header>
   <section class="stats">
     <article><span>Total rules</span><strong id="total">—</strong><small>YAML detection library</small></article>
     <article><span>Valid rules</span><strong id="valid">—</strong><small>Passed structural validation</small></article>
@@ -36,5 +36,5 @@
   <section class="panel test-panel" id="tests"><div class="panel-head"><div><div class="eyebrow">QUALITY GATES</div><h2>Regression results</h2></div><span class="tag" id="test-count">0 cases</span></div>
     <div id="test-list" class="test-list"><div class="empty">Loading test cases...</div></div>
   </section>
-  <footer>SigmaForge Studio · Detection-as-code lab · Rule files remain local to this machine</footer>
+  <footer>SigmaForge Studio · Public read-only detection-engineering workspace · No endpoint telemetry is collected by this service</footer>
 </main></div><script src="/app.js"></script></body></html>

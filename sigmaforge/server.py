@@ -71,6 +71,10 @@ class Handler(BaseHTTPRequestHandler):
             if parsed.path=="/api/compile":
                 rule_id=params.get("id",[""])[0]
                 backend=params.get("backend",["splunk"])[0]
+                if backend not in {"splunk", "sentinel", "elastic"}:
+                    return self._send({"error":"unsupported backend"}, 400)
+                if len(rule_id) > 64:
+                    return self._send({"error":"invalid rule id"}, 400)
                 docs=validate_paths(self.rules_root)
                 doc=next((item for item in docs if item.rule_id==rule_id),None)
                 if doc is None: return self._send({"error":"rule not found"},404)
@@ -85,8 +89,10 @@ class Handler(BaseHTTPRequestHandler):
         super().log_message(fmt,*args)
 
 def serve(host="127.0.0.1",port=8788,rules_root="rules",cases_path="tests/cases.json"):
-    if host not in {"127.0.0.1","localhost","::1"}:
-        raise ValueError("For safety, SigmaForge only binds to localhost in this portfolio build.")
+    # SigmaForge exposes read-only rule metadata, regression results and query compilation.
+    # It has no write endpoints, but public hosting should still be limited to this app.
+    if not host or len(host) > 255:
+        raise ValueError("A valid bind host is required.")
     if not Path(rules_root).exists(): raise FileNotFoundError(rules_root)
     Handler.rules_root=rules_root; Handler.cases_path=cases_path
     server=ThreadingHTTPServer((host,port),Handler)

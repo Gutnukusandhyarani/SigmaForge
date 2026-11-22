@@ -161,3 +161,20 @@ python -m unittest discover -s tests -v
 ## Credits and relationship to upstream projects
 
 SigmaForge was independently written after reviewing the high-level generic detection-rule approach and repository organization documented by [SigmaHQ](https://github.com/SigmaHQ/sigma). No SigmaHQ source code, rule files, logos or other upstream assets are included. The Sigma project and its maintainers are independent of this portfolio project.
+
+
+## Public dashboard deployment (Render)
+
+This service is suitable for a public, read-only portfolio dashboard. It exposes the existing rule library, validation results, regression cases, health status and supported query compilation over HTTP GET endpoints. It does not provide rule editing or event ingestion over the public interface.
+
+### Render configuration
+
+A `render.yaml` Blueprint is included. In Render, create a Blueprint from this repository and review the service settings before deploying. The service uses the Python runtime, installs `requirements.txt`, runs `python -m sigmaforge serve --host 0.0.0.0 --port $PORT --rules rules --cases tests/cases.json`, and checks `/api/health`. The free plan can sleep when idle; the first visitor may experience a cold start.
+
+### Safety and limitations
+
+- Public visitors can read the included rule metadata, test outcomes and generated queries.
+- Do not add credentials, private detection content, internal hostnames, real production log records or customer data to the public repository.
+- The public dashboard is a rule-engine workbench, not a SIEM and not a live endpoint monitor.
+- Query generation supports only the documented subset in `docs/supported-syntax.md`. Verify generated queries against the target SIEM before using them.
+- The dashboard is served over HTTPS by Render when deployed.
